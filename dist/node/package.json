@@ -1,0 +1,8 @@
+{
+  "name": "dicom-parser-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dicomParser.node.js",
+  "scripts": {
+  }
+}
