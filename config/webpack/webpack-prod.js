@@ -2,18 +2,36 @@ const merge = require('./merge');
 const baseConfig = require('./webpack-base');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const devConfig = {
-  output: {
-    filename: '[name].min.js'
-  },
-  mode: "production",
-  optimization: {
-    minimizer: [
-      new UglifyJSPlugin({
-        sourceMap: true
-      })
-    ]
-  },
-};
+const prodConfig = [
+	{
+		mode: "production",
+		target: 'node',
+		output: {
+			filename: '[name].node.min.js'
+		},
+		optimization: {
+			minimizer: [
+				new UglifyJSPlugin({
+					sourceMap: true
+				})
+			]
+		}
+	},
+	{
+		mode: "production",
+		target: 'web',
+		output: {
+			filename: '[name].web.min.js'
+		},
+		optimization: {
+			minimizer: [
+				new UglifyJSPlugin({
+					sourceMap: true
+				})
+			]
+		}
+	}
+];
 
-module.exports = merge(baseConfig, devConfig);
+//module.exports = prodConfig;
+module.exports = merge(baseConfig, prodConfig);
